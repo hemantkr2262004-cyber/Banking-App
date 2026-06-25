@@ -13,7 +13,7 @@ public class Accountmapper {
         return account;
 
     }
-    public static AccountDto mapToAccount(Account account) {
+    public static AccountDto mapToAccountDto(Account account) {
         AccountDto accountDto =  new AccountDto(
                 account.getId(),
                 account.getAccountHolderName(),
