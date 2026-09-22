@@ -13,6 +13,7 @@ public class AccountServiceImpl implements AccountService {
 
 
     public AccountServiceImpl(AccountRepository accountRepository) {
+
         this.accountRepository = accountRepository;
     }
 
@@ -40,13 +41,12 @@ public class AccountServiceImpl implements AccountService {
         return Accountmapper.mapToAccountDto(saveAccount);
 
     }
-
     @Override
     public AccountDto withdraw(Long id, Double amount) {
         Account account = accountRepository.findById(id).orElseThrow(() -> new RuntimeException("Account does not exist"));
 
         if (account.getBalance() < amount) {
-throw new RuntimeException ("Insuficient Balance");
+       throw new RuntimeException ("Insuficient Balance");
         }
         double total= account.getBalance()-amount;
         account.setBalance(total);
